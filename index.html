@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara's Sips and Spice - Embrace a Healthy You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2d4a2b;
+            background-color: #fefefe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #7cb342 0%, #558b2f 50%, #33691e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .motto {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(139, 195, 74, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><circle fill="%234caf50" opacity="0.1" cx="200" cy="150" r="80"/><circle fill="%238bc34a" opacity="0.1" cx="800" cy="200" r="100"/><circle fill="%23689f38" opacity="0.1" cx="1000" cy="400" r="120"/><path fill="%237cb342" opacity="0.1" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            font-family: 'Georgia', serif;
+        }
+
+        .hero-motto {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #e8f5e8;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 0;
+            background: #f9fdf9;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2e7d32;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.15);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.25);
+            border-color: #7cb342;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2e7d32;
+        }
+
+        .category-description {
+            color: #558b2f;
+            font-size: 0.9rem;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #7cb342;
+            background: white;
+            color: #7cb342;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #7cb342;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #e8f5e8;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(76, 175, 80, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .organic-badge {
+            background: #4caf50;
+        }
+
+        .new-badge {
+            background: #2196f3;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2e7d32;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .product-benefits {
+            background: #f1f8e9;
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #7cb342;
+        }
+
+        .product-benefits h4 {
+            color: #2e7d32;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-benefits ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: #558b2f;
+        }
+
+        .product-benefits li::before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #7cb342, #8bc34a);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 179, 66, 0.4);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: #558b2f;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .about-image {
+            height: 400px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect fill="%237cb342" width="400" height="400"/><circle fill="%234caf50" cx="200" cy="200" r="150"/><circle fill="%238bc34a" cx="200" cy="200" r="100"/><circle fill="%23aed581" cx="200" cy="200" r="50"/><text x="200" y="210" text-anchor="middle" fill="white" font-size="20" font-family="serif">Sara\'s Story</text></svg>');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(124, 179, 66, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2e7d32;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #a5d6a7;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #c8e6c9;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #4caf50;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #66bb6a;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #4caf50;
+            color: #a5d6a7;
+        }
+
+        /* Product Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e8f5e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-motto {
+                font-size: 1.4rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card,
+        .category-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div>
+                    <a href="#" class="logo">Sara's Sips and Spice</a>
+                    <div class="motto">Embrace a Healthy You</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sara's Sips and Spice</h1>
+            <div class="hero-motto">Embrace a Healthy You</div>
+            <p class="hero-description">
+                Discover nature's finest herbs, premium spices, refreshing juices, and wellness products. 
+                Your journey to natural health starts here.
+            </p>
+            <a href="#products" class="cta-button">Shop Natural Wellness</a>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Natural Collections</h2>
+                <p>Premium quality herbs, spices, and wellness products sourced with care</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterProducts('herbs')">
+                    <span class="category-icon">🌿</span>
+                    <div class="category-title">Fresh Herbs</div>
+                    <p class="category-description">Rosemary, Mint, Moringa, Lemongrass and more organic herbs</p>
+                </div>
+                
+                <div class="category-card" onclick="filterProducts('spices')">
+                    <span class="category-icon">🌶️</span>
+                    <div class="category-title">Premium Spices</div>
+                    <p class="category-description">Cinnamon, Cloves, Paprika and exotic spice blends</p>
+                </div>
+                
+                <div class="category-card" onclick="filterProducts('juices')">
+                    <span class="category-icon">🥤</span>
+                    <div class="category-title">Fresh Juices</div>
+                    <p class="category-description">Cold-pressed fruit juices packed with vitamins</p>
+                </div>
+                
+                <div class="category-card" onclick="filterProducts('wellness')">
+                    <span class="category-icon">🍯</span>
+                    <div class="category-title">Wellness Products</div>
+                    <p class="category-description">Kombucha, Raw Honey, and natural health boosters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Handpicked natural products for your healthy lifestyle</p>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('herbs')">Herbs</button>
+                <button class="filter-btn" onclick="filterProducts('spices')">Spices</button>
+                <button class="filter-btn" onclick="filterProducts('juices')">Juices</button>
+                <button class="filter-btn" onclick="filterProducts('wellness')">Wellness</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sara's Story</h2>
+                    <p>
+                        Welcome to Sara's Sips and Spice, where passion for natural wellness meets 
+                        premium quality products. Sara began this journey with a simple belief: 
+                        nature provides everything we need to live healthily and vibrantly.
+                    </p>
+                    <p>
+                        Every herb is carefully selected, every spice is premium grade, and every 
+                        product is chosen with your health and happiness in mind. From our family 
+                        to yours, we're committed to bringing you the finest natural products.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <span>🌱</span> 100% Organic
+                        </div>
+                        <div class="feature-item">
+                            <span>🚚</span> Fresh Delivery
+                        </div>
+                        <div class="feature-item">
+                            <span>💚</span> Sustainably Sourced
+                        </div>
+                        <div class="feature-item">
+                            <span>⭐</span> Premium Quality
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Details</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Sara</h3>
+                    <p>📞 Phone: 0758527686</p>
+                    <p>✉️ Email: putitynjenga07@gmsil.com</p>
+                    <p>📍 Location: nairobi kimathi house 3rd floor</p>
+                    <p>🕒 Hours: Mon-Sat 8AM-6PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Promise</h3>
+                    <p>✓ Fresh, organic products</p>
+                    <p>✓ Sustainable farming practices</p>
+                    <p>✓ Fair trade partnerships</p>
+                    <p>✓ Your health is our priority</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Our Journey</h3>
+                    <p>Stay updated with new products, health tips, and special offers</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">📘</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sara's Sips and Spice. All rights reserved. | Embrace a Healthy You</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data for Sara's business
+        const products = [
+            {
+                id: 1,
+                title: "Organic Rosemary",
+                category: "herbs",
+                price: 8.99,
+                badge: "organic",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%234caf50' width='300' height='200'/><path fill='%232e7d32' d='M50,150 Q150,50 250,150 L250,200 L50,200 Z'/><circle fill='%237cb342' cx='150' cy='100' r='30'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='12'>Rosemary</text></svg>",
+                description: "Fresh organic rosemary, perfect for cooking and aromatherapy. Handpicked and dried naturally.",
+                benefits: ["Improves memory", "Anti-inflammatory", "Rich in antioxidants", "Supports digestion"]
+            },
+            {
+                id: 2,
+                title: "Premium Ceylon Cinnamon",
+                category: "spices",
+                price: 12.99,
+                badge: "premium",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23d4942a' width='300' height='200'/><rect fill='%23a0522d' x='50' y='50' width='200' height='100' rx='10'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='14'>Cinnamon</text></svg>",
+                description: "Authentic Ceylon cinnamon sticks, the world's finest cinnamon with sweet, delicate flavor.",
+                benefits: ["Regulates blood sugar", "Anti-inflammatory", "Heart healthy", "Natural preservative"]
+            },
+            {
+                id: 3,
+                title: "Fresh Mint Leaves",
+                category: "herbs",
+                price: 6.99,
+                badge: "fresh",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%2300e676' width='300' height='200'/><circle fill='%234caf50' cx='100' cy='80' r='25'/><circle fill='%234caf50' cx='200' cy='80' r='25'/><circle fill='%234caf50' cx='150' cy='120' r='30'/><text x='150' y='125' text-anchor='middle' fill='white' font-size='12'>Fresh Mint</text></svg>",
+                description: "Garden-fresh mint leaves, perfect for teas, cooking, and natural remedies.",
+                benefits: ["Aids digestion", "Freshens breath", "Reduces nausea", "Cooling effect"]
+            },
+            {
+                id: 4,
+                title: "Raw Wildflower Honey",
+                category: "wellness",
+                price: 15.99,
+                badge: "organic",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23ffc107' width='300' height='200'/><circle fill='%23ff8f00' cx='150' cy='100' r='60'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='14'>Raw Honey</text></svg>",
+                description: "Pure, unprocessed wildflower honey harvested from local beekeepers. Rich in enzymes and nutrients.",
+                benefits: ["Natural energy boost", "Antimicrobial properties", "Soothes sore throat", "Rich in antioxidants"]
+            },
+            {
+                id: 5,
+                title: "Moringa Powder",
+                category: "herbs",
+                price: 18.99,
+                badge: "superfood",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%238bc34a' width='300' height='200'/><circle fill='%234caf50' cx='150' cy='100' r='50'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='12'>Moringa</text></svg>",
+                description: "Nutrient-dense moringa powder, known as the 'miracle tree'. Perfect for smoothies and health drinks.",
+                benefits: ["92 nutrients", "Complete protein", "Vitamin C boost", "Natural detox"]
+            },
+            {
+                id: 6,
+                title: "Kombucha - Ginger Turmeric",
+                category: "wellness",
+                price: 9.99,
+                badge: "probiotic",
+                image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23ff9800' width='300' height='200'/><circle fill='%23f57c00' cx='150' cy='100' r='45'/><text x='150' y='105' text-anchor='middle' fill='white' font-size='11'>Kombucha</text></svg>",
+                description: "Fermented tea with ginger and turmeric. Packed with probiotics for gut health.",
+                benefits: ["Gut health support", "Natural probiotics", "Anti-inflammatory", "Digestive
